@@ -59,3 +59,6 @@ colnames(subdf) <- sub("\\..", "", names(subdf))
 
 # Create a new dataset with only one value for each subject/variable pair (average) ----
 finalDT <- subdf %>% group_by(subjects, activities) %>% summarise_each(funs(mean))
+
+# Write the final data table to a text file.
+write.table(finalDT, file = "./submission/SummaryData.txt", row.names = FALSE)
